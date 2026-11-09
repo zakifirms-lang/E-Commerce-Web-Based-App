@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<title>User</title>
+		<link rel="stylesheet" href="login.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	</head>	
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="cekdatauser.php" method="post" enctype="multipart/form-data">
+			<h2>Create Account</h2>
+			<input type="text" name="username" placeholder="Username" autocomplete="off" required>
+			<input type="password" name="password" placeholder="Password" autocomplete="off" required>
+			<input type="text" name="email" placeholder="Email" autocomplete="off" required>
+			<input type="text" name="phone" placeholder="Phone" autocomplete="off" required>
+			<input type="text" name="address" placeholder="Address" autocomplete="off" required>
+			<button>Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="ceklogin.php" method="post" enctype="multipart/form-data">
+			<div class="logo">
+				<a href="../index.php"><img src="/uts/view/jordan.png" alt="Logo"></a>
+			</div>
+			<input type="text" name="username" placeholder="Username" autocomplete="off" required>
+			<input type="password" name="password" placeholder="Password" autocomplete="off" id="password" required>
+			<i class="fa-regular fa-eye-slash" id="show"></i>
+			<button>Login</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Hello!</h1>
+				<p>Already a member?, Click this button to login!</p>
+				<button class="ghost" id="signIn">Login</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Welcome Back User!</h1>
+				<p>Not a user yet?, Click this button to join!</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	const signUpButton = document.getElementById('signUp');
+	const signInButton = document.getElementById('signIn');
+	const container = document.getElementById('container');
+	const showPassword = document.querySelector("#show");
+	
+	signUpButton.addEventListener('click', () => {
+		container.classList.add("right-panel-active");
+	});
+	
+	signInButton.addEventListener('click', () => {
+		container.classList.remove("right-panel-active");
+	});
+	
+	showPassword.addEventListener("click", function(){
+			this.classList.toggle("fa-eye-slash");
+			this.classList.toggle("fa-eye", !this.classList.contains("fa-eye-slash"));
+			var x = document.getElementById("password");
+		  if (x.type === "password") {
+			x.type = "text";
+		  } else {
+			x.type = "password";
+		  }
+		});
+</script>
+</html>
